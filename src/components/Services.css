@@ -186,7 +186,7 @@
 }
 
 .service-name {
-  color: var(--text-light);
+  color: #fff;
   font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 18px;
