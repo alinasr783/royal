@@ -6,6 +6,7 @@ import Services from '../components/Services';
 import Stats from '../components/Stats';
 import Testimonials from '../components/Testimonials';
 import CTA from '../components/CTA';
+import StudyDestinations from '../components/StudyDestinations'
 import './Home.css';
 
 const Home = () => {
@@ -14,7 +15,7 @@ const Home = () => {
       <Header />
       <Hero />
       <Services />
-      <Stats />
+      <StudyDestinations />
       <Testimonials />
       <CTA />
     </div>

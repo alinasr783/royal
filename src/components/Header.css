@@ -1,18 +1,16 @@
-/* src/components/Header.css */
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
 
 :root {
-  --dark-bg: #121212;
-  --dark-surface: #1E1E1E;
-  --dark-surface-light: #2A2A2A;
-  --golden-primary: #D4AF37;
-  --golden-secondary: #F4D03F;
-  --golden-accent: #A67C00;
-  --text-light: #E0E0E0;
-  --text-dark: #121212;
-  --golden-shadow: 0 10px 30px rgba(166, 124, 0, 0.2);
-  --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  --glass-bg: rgba(30, 30, 30, 0.92);
+  --light-bg: #ffffff;
+  --light-surface: #f8f8f8;
+  --light-surface-light: #f0f0f0;
+  --golden-primary: #d4af37;
+  --golden-secondary: #c9a227;
+  --golden-accent: #b8860b;
+  --text-dark: #333333;
+  --text-light: #f5f5f5;
+  --golden-shadow: 0 4px 12px rgba(180, 150, 50, 0.15);
+  --transition: all 0.3s ease;
   --golden-gradient: linear-gradient(135deg, var(--golden-accent), var(--golden-primary));
 }
 
@@ -24,12 +22,11 @@
 }
 
 body {
-  background-color: var(--dark-bg);
-  color: var(--text-light);
-  min-height: 200vh; /* For demonstration */
+  background-color: var(--light-bg);
+  color: var(--text-dark);
 }
 
-/* Improved Desktop Header Styles */
+/* Desktop Header Styles */
 .desktop-header {
   position: fixed;
   top: 0;
@@ -37,43 +34,15 @@ body {
   width: 100%;
   z-index: 1000;
   transition: var(--transition);
-  background: transparent;
-  padding: 0.5rem 1.5rem;
-  box-sizing: border-box;
-  will-change: transform, background, box-shadow;
-  background: var(--glass-bg);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-  border-radius: 0;
+  background: var(--light-bg);
+  padding: 0.8rem 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .desktop-header.scrolled {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
   box-shadow: var(--golden-shadow);
-  width: calc(100% - 40px);
-  left: 50%;
-  top: 20px;
-  transform: translateX(-50%);
-  max-width: 1400px;
-  border-radius: 20px;
-  animation: float-in 0.4s ease-out forwards;
-}
-
-@keyframes float-in {
-  0% {
-    transform: translate(-50%, -20px);
-    opacity: 0.8;
-    border-radius: 20px;
-    top: 0;
-  }
-  100% {
-    transform: translate(-50%, 0);
-    opacity: 1;
-    border-radius: 20px;
-    top: 20px;
-  }
+  padding: 0.6rem 1.5rem;
 }
 
 .desktop-nav {
@@ -90,17 +59,15 @@ body {
   gap: 0.8rem;
   cursor: pointer;
   transition: var(--transition);
-  padding: 0.5rem 1rem;
-  border-radius: 15px;
 }
 
 .logo:hover {
-  background: rgba(212, 175, 55, 0.1);
+  opacity: 0.9;
 }
 
 .logo-icon {
   background: var(--golden-gradient);
-  color: var(--text-dark);
+  color: var(--light-bg);
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -108,13 +75,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  box-shadow: 0 4px 15px rgba(166, 124, 0, 0.3);
-  transition: var(--transition);
-}
-
-.logo:hover .logo-icon {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(166, 124, 0, 0.4);
+  box-shadow: var(--golden-shadow);
 }
 
 .logo-text {
@@ -123,17 +84,15 @@ body {
 }
 
 .logo-main {
-  font-weight: 800;
-  font-size: 1.4rem;
+  font-weight: 700;
+  font-size: 1.3rem;
   letter-spacing: -0.5px;
-  background: var(--golden-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-dark);
 }
 
 .logo-sub {
   font-size: 0.8rem;
-  color: var(--golden-secondary);
+  color: var(--golden-accent);
   margin-top: -3px;
 }
 
@@ -148,35 +107,17 @@ body {
   align-items: center;
   gap: 0.5rem;
   font-weight: 600;
-  color: var(--text-light);
+  color: var(--text-dark);
   text-decoration: none;
   padding: 0.8rem 1.2rem;
-  border-radius: 50px;
+  border-radius: 8px;
   transition: var(--transition);
-  overflow: hidden;
   cursor: pointer;
 }
 
 .nav-item:hover, .nav-item.active {
   color: var(--golden-primary);
-  background: rgba(212, 175, 55, 0.15);
-}
-
-.nav-item-hover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(244, 208, 63, 0.15);
-  border-radius: 50px;
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
-  z-index: -1;
-}
-
-.nav-item.active .nav-item-hover {
-  transform: translateY(0);
+  background: rgba(212, 175, 55, 0.1);
 }
 
 .cta-container {
@@ -188,76 +129,33 @@ body {
   background: transparent;
   color: var(--golden-primary);
   border: 2px solid var(--golden-primary);
-  padding: 0.8rem 2.2rem;
-  border-radius: 50px;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  letter-spacing: 0.5px;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
 }
 
 .cta-button:hover {
-  color: var(--dark-bg);
-  background: var(--golden-gradient);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+  background: var(--golden-primary);
+  color: var(--light-bg);
 }
 
-.cta-button:active {
-  transform: translateY(0);
-  box-shadow: 
-    0 2px 10px rgba(212, 175, 55, 0.4),
-    inset 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Mobile Header Styles (Top Header) */
+/* Mobile Header Styles */
 .mobile-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: var(--dark-surface);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  background: var(--light-bg);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   transition: var(--transition);
-  border-radius: 0;
 }
 
 .mobile-header.scrolled {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
   box-shadow: var(--golden-shadow);
-  width: calc(100% - 30px);
-  left: 50%;
-  top: 15px;
-  transform: translateX(-50%);
-  max-width: 600px;
-  border-radius: 20px;
-  animation: float-in-mobile 0.4s ease-out forwards;
-}
-
-@keyframes float-in-mobile {
-  0% {
-    transform: translate(-50%, -15px);
-    opacity: 0.8;
-    border-radius: 20px;
-    top: 0;
-  }
-  100% {
-    transform: translate(-50%, 0);
-    opacity: 1;
-    border-radius: 20px;
-    top: 15px;
-  }
 }
 
 .mobile-nav {
@@ -295,12 +193,12 @@ body {
   left: 0;
   width: 100%;
   height: calc(100vh - 70px);
-  background: var(--dark-surface);
+  background: var(--light-bg);
   transform: translateX(100%);
-  transition: transform 0.4s ease;
+  transition: transform 0.3s ease;
   z-index: 999;
   overflow-y: auto;
-  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .mobile-menu.open {
@@ -308,10 +206,10 @@ body {
 }
 
 .mobile-menu-items {
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .mobile-nav-item {
@@ -319,18 +217,14 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  border-radius: 12px;
+  border-radius: 8px;
   transition: var(--transition);
   cursor: pointer;
-  background: var(--dark-surface-light);
+  background: var(--light-surface);
 }
 
 .mobile-nav-item:hover, .mobile-nav-item.active {
-  background: rgba(212, 175, 55, 0.15);
-}
-
-.mobile-nav-item.active {
-  border-left: 3px solid var(--golden-primary);
+  background: rgba(212, 175, 55, 0.1);
 }
 
 .mobile-nav-icon {
@@ -343,7 +237,7 @@ body {
 .mobile-nav-label {
   font-size: 1.1rem;
   font-weight: 500;
-  color: var(--text-light);
+  color: var(--text-dark);
 }
 
 .mobile-nav-item.active .mobile-nav-label {
@@ -353,25 +247,20 @@ body {
 
 .mobile-cta-button {
   background: var(--golden-gradient);
-  color: var(--dark-bg);
+  color: var(--light-bg);
   border: none;
   padding: 1rem;
-  border-radius: 12px;
+  border-radius: 8px;
   font-weight: 700;
   font-size: 1.1rem;
   cursor: pointer;
   transition: var(--transition);
   margin-top: 1rem;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  box-shadow: var(--golden-shadow);
 }
 
 .mobile-cta-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-}
-
-.mobile-cta-button:active {
-  transform: translateY(0);
+  opacity: 0.9;
 }
 
 /* Responsive Adjustments */
@@ -395,21 +284,16 @@ body {
   .mobile-nav {
     padding: 0.8rem 1rem;
   }
-
-  .mobile-header.scrolled {
-    top: 10px;
-    width: calc(100% - 20px);
-  }
 }
 
 @media (max-width: 480px) {
   .logo-main {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .logo-icon {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     font-size: 1rem;
   }
 
@@ -419,8 +303,7 @@ body {
     height: 36px;
   }
 
-  .mobile-header.scrolled {
-    top: 8px;
-    width: calc(100% - 16px);
+  .mobile-nav-label {
+    font-size: 1rem;
   }
 }

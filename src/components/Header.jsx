@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -78,7 +77,6 @@ const Header = () => {
               >
                 <FontAwesomeIcon icon={item.icon} />
                 <span>{item.label}</span>
-                {isActive && <div className="nav-item-hover"></div>}
               </div>
             );
           })}
