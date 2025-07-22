@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import './Hero.css';
 
 const Hero = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     const background = document.querySelector('.background-image');
     if (background) {
@@ -36,7 +38,8 @@ const Hero = () => {
             <h1 className="animated-title">
               <span className="gold-text">ابحث</span> عن مستقبلك الأكاديمي
               <span className="highlighted-text">
-               <span className="glowing-text">رويال</span> مع 
+                 مع 
+               <span className="glowing-text">رويال </span>
               </span>
             </h1>
 
@@ -46,7 +49,7 @@ const Hero = () => {
           </div>
 
           <div className="hero-buttons">
-            <button className="primary-btn">
+            <button className="primary-btn" onClick={()=> navigate("programs")}>
               اكتشف البرامج الدراسية
               <FontAwesomeIcon icon={faChevronRight} className="btn-icon" />
             </button>

@@ -27,7 +27,7 @@ const Nation = () => {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
 
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -401,6 +401,8 @@ const Nation = () => {
             <div className="hero-breadcrumbs">
               <span onClick={() => navigate('/')}>الرئيسية</span>
               <FontAwesomeIcon icon={faChevronRight} className="breadcrumb-icon" />
+              <span onClick={() => navigate('/destination')}>افضل الوجهات</span>
+              <FontAwesomeIcon icon={faChevronRight} className="breadcrumb-icon" />
               <span className="active">{nation.name}</span>
             </div>
           </div>
@@ -452,25 +454,51 @@ const Nation = () => {
           <div className="details-tabs">
             <button 
               className={`tab-btn ${activeTab === 'overview' ? 'active' : ''}`}
-              onClick={() => setActiveTab('overview')}
+              onClick={() => {
+                setActiveTab('overview');
+
+                window.scrollBy({
+                                        top: 450,
+                                        behavior: 'smooth'
+                                      })
+                             }}
             >
               نظرة عامة
             </button>
             <button 
               className={`tab-btn ${activeTab === 'education' ? 'active' : ''}`}
-              onClick={() => setActiveTab('education')}
+              onClick={() => {
+                setActiveTab('education')
+
+                window.scrollBy({
+                                        top: 450,
+                                        behavior: 'smooth'
+                                      })
+              }}
             >
               النظام التعليمي
             </button>
             <button 
               className={`tab-btn ${activeTab === 'culture' ? 'active' : ''}`}
-              onClick={() => setActiveTab('culture')}
+              onClick={() => {setActiveTab('culture')
+
+                              window.scrollBy({
+                                                      top: 450,
+                                                      behavior: 'smooth'
+                                                    })
+                             }}
             >
               الحياة والثقافة
             </button>
             <button 
               className={`tab-btn ${activeTab === 'advantages' ? 'active' : ''}`}
-              onClick={() => setActiveTab('advantages')}
+              onClick={() => {setActiveTab('advantages')
+
+                              window.scrollBy({
+                                                      top: 450,
+                                                      behavior: 'smooth'
+                                                    })
+                             }}
             >
               المميزات
             </button>
@@ -492,7 +520,7 @@ const Nation = () => {
                       </div>
                     </div>
 
-                    <div className="feature">
+                    <div className="feature" >
                       <FontAwesomeIcon icon={faHome} />
                       <div>
                         <h4>تكاليف المعيشة</h4>
@@ -670,7 +698,7 @@ const Nation = () => {
                     </div>
                   </div>
 
-                  <button className="university-button">
+                  <button className="university-button" onClick={()=>navigate(`/program/${university.id}`)} >
                     تصفح البرامج الدراسية
                     <FontAwesomeIcon icon={faChevronRight} className="button-icon" />
                   </button>

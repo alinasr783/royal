@@ -9,11 +9,15 @@
   --text-gray: #666666;
   --transition: all 0.3s ease;
 }
-
+*{
+  direction: rtl;
+}
 .testimonials {
   padding: 80px 20px;
   background-color: var(--light-bg);
   position: relative;
+  overflow-x: hidden;
+
 }
 
 .section-header {

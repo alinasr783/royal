@@ -22,7 +22,7 @@ const Header = () => {
 
   const navItems = [
     { id: 'home', icon: faHome, label: 'الرئيسية', path: '/' },
-    { id: 'courses', icon: faBookOpen, label: 'الدورات', path: '/courses' },
+    { id: 'courses', icon: faBookOpen, label: 'الدورات', path: 'programs' },
     { id: 'articles', icon: faGlobeAmericas, label: 'المقالات', path: '/articles' },
     { id: 'about', icon: faUsers, label: 'من نحن', path: '/about' },
     { id: 'contact', icon: faEnvelope, label: 'اتصل بنا', path: '/contact' }
@@ -56,15 +56,6 @@ const Header = () => {
   const DesktopHeader = () => (
     <header className={`desktop-header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="desktop-nav">
-        <div className="logo" onClick={() => navigate('/')}>
-          <div className="logo-icon">
-            <FontAwesomeIcon icon={faGraduationCap} />
-          </div>
-          <div className="logo-text">
-            <span className="logo-main">Royal Study</span>
-            <span className="logo-sub">الدراسة بالخارج</span>
-          </div>
-        </div>
 
         <nav className="nav-links">
           {navItems.map(item => {
@@ -81,6 +72,16 @@ const Header = () => {
             );
           })}
         </nav>
+        <div className="logo" onClick={() => navigate('/')}>
+          <div className="logo-icon">
+            <FontAwesomeIcon icon={faGraduationCap} />
+          </div>
+          <div className="logo-text">
+            <span className="logo-main">Royal Study</span>
+            <span className="logo-sub">الدراسة بالخارج</span>
+          </div>
+        </div>
+
 
         <div className="cta-container">
           <button className="cta-button">
@@ -94,23 +95,6 @@ const Header = () => {
   const MobileHeader = () => (
     <header className={`mobile-header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="mobile-nav">
-        <div className="mobile-logo-container">
-          <div className="logo" onClick={() => navigate('/')}>
-            <div className="logo-icon">
-              <FontAwesomeIcon icon={faGraduationCap} />
-            </div>
-            <div className="logo-text">
-              <span className="logo-main">Royal Study</span>
-            </div>
-          </div>
-
-          <button 
-            className="mobile-menu-toggle"
-            onClick={toggleMobileMenu}
-          >
-            <FontAwesomeIcon icon={mobileMenuOpen ? faTimes : faBars} />
-          </button>
-        </div>
 
         <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
           <div className="mobile-menu-items">
@@ -136,6 +120,25 @@ const Header = () => {
             </button>
           </div>
         </div>
+        <div className="mobile-logo-container">
+          
+          <div className="logo" onClick={() => navigate('/')}>
+            <div className="logo-icon">
+              <FontAwesomeIcon icon={faGraduationCap} />
+            </div>
+            <div className="logo-text">
+              <span className="logo-main">Royal Study</span>
+            </div>
+          </div>
+          <button 
+            className="mobile-menu-toggle"
+            onClick={toggleMobileMenu}
+          >
+            <FontAwesomeIcon icon={mobileMenuOpen ? faTimes : faBars} />
+          </button>
+          
+        </div>
+
       </div>
     </header>
   );

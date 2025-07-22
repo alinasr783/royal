@@ -1,9 +1,14 @@
+*{
+  direction: rtl;
+}
 /* التصميم العام */
 .nation-page {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
   background-color: #f8f9fa;
   line-height: 1.6;
+  width:100vw;
+  overflow-x: hidden;
 }
 
 .container {
@@ -79,8 +84,8 @@
   cursor: pointer;
   transition: all 0.3s ease;
   position: absolute;
-  top: 30px;
-  left: 30px;
+  top: -120px !important;
+  left: 20px !important;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -101,11 +106,13 @@
   margin-top: 30px;
   font-size: 1.1rem;
   flex-wrap: wrap;
+  direction: ltr !important;
 }
 
 .hero-breadcrumbs span {
   cursor: pointer;
   transition: all 0.2s;
+  direction: ltr !important;
 }
 
 .hero-breadcrumbs span:hover {
@@ -510,6 +517,7 @@
 .nation-universities {
   padding: 100px 0;
   background: #f8f9fa;
+  width:100vw;
 }
 
 .section-header {
@@ -534,6 +542,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 40px;
+  width:100vw;
 }
 
 .university-card {
@@ -832,6 +841,16 @@
 }
 
 /* التكيف مع الشاشات الصغيرة */
+@media (max-width: 1200px) {
+  .hero-content h1 {
+    font-size: 3.2rem;
+  }
+
+  .details-content {
+    gap: 40px;
+  }
+}
+
 @media (max-width: 992px) {
   .hero-content h1 {
     font-size: 2.8rem;
@@ -848,6 +867,15 @@
   .university-card {
     max-width: 100%;
   }
+
+  .details-content {
+    flex-direction: column;
+  }
+
+  .details-image {
+    order: -1;
+    margin-bottom: 40px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -863,15 +891,6 @@
     font-size: 1.1rem;
   }
 
-  .details-content {
-    flex-direction: column;
-  }
-
-  .details-image {
-    order: -1;
-    margin-bottom: 40px;
-  }
-
   .info-grid {
     grid-template-columns: 1fr 1fr;
     margin-top: -40px;
@@ -883,6 +902,18 @@
 
   .universities-grid {
     grid-template-columns: 1fr;
+  }
+
+  .section-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .consultation-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .details-text h2 {
+    font-size: 2rem;
   }
 }
 
@@ -897,19 +928,85 @@
   }
 
   .back-button {
-    top: -100px;
-    left: 10px;
+    top: -150px;
+    left: -10px;
     padding: 10px 15px;
     font-size: 0.95rem;
   }
 
   .tab-btn {
     width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
   }
 
   .consultation-steps {
     flex-direction: column;
     align-items: center;
     gap: 30px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+    margin-top: 30px;
+  }
+
+  .hero-breadcrumbs {
+    font-size: 0.9rem;
+  }
+
+  .university-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .consultation-button {
+    width: 100%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nation-hero {
+    height: 50vh;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .university-card {
+    margin: 0 -15px;
+    border-radius: 0;
+  }
+
+  .university-meta {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .consultation-steps .step {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .info-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .info-card p {
+    font-size: 1.1rem;
   }
 }

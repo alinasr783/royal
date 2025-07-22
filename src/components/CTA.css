@@ -7,7 +7,9 @@
   --text-light: #f5f5f5;
   --transition: all 0.3s ease;
 }
-
+*{
+  direction: rtl;
+}
 .cta-section {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%), 
               url('https://i.ibb.co/mr2GMcqS/IMG-20250719-WA0018.jpg') no-repeat center/cover;

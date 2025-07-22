@@ -92,8 +92,8 @@ const StudyDestinations = () => {
               </div>
 
               <button className="destination-button" onClick={()=>handleBrowseUniversities(destination.id)}>
-                تصفح الجامعات
                 <FontAwesomeIcon icon={faChevronRight} className="button-icon" />
+                تصفح الجامعات
               </button>
             </div>
           </div>
@@ -101,9 +101,9 @@ const StudyDestinations = () => {
       </div>
 
       <div className="section-footer">
-        <button className="view-all-button">
-          استكشف جميع الوجهات
+        <button className="view-all-button" onClick={()=>navigate("/destination")}>
           <FontAwesomeIcon icon={faChevronRight} className="button-icon" />
+          استكشف جميع الوجهات
         </button>
       </div>
     </section>

@@ -11,7 +11,9 @@
   --card-bg: rgba(255, 255, 255, 0.9);
   --border-light: rgba(212, 175, 55, 0.15);
 }
-
+*{
+  direction: rtl;
+}
 .hero {
   height: 100vh;
   position: relative;

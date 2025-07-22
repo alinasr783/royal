@@ -10,7 +10,9 @@
   --golden-shadow: 0 10px 30px rgba(166, 124, 0, 0.15);
   --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-
+*{
+  direction: rtl;
+}
 .home-page {
   font-family: 'Tajawal', sans-serif;
   color: var(--text-color);
@@ -18,6 +20,7 @@
   background-color: var(--light-bg);
   width: 100vw;
   padding-top: 0;
+  overflow-x: hidden;
 }
 
 
