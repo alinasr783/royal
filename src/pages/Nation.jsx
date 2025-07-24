@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import CTA from '../components/CTA'
 import { 
   faChevronLeft, 
   faGraduationCap, 
@@ -709,37 +710,7 @@ const Nation = () => {
         </div>
       </div>
 
-      {/* قسم الاستشارة */}
-      <div className="nation-consultation">
-        <div className="container">
-          <div className="consultation-content">
-            <h2>هل ترغب في الدراسة في <span className="gold-text">{nation.name}</span>؟</h2>
-            <p>سجل معنا للحصول على استشارة مجانية ودعم كامل للتقديم على الجامعات</p>
-            <div className="consultation-steps">
-              <div className="step">
-                <div className="step-icon">1</div>
-                <p>استشارة أكادمية مجانية</p>
-              </div>
-              <div className="step">
-                <div className="step-icon">2</div>
-                <p>اختيار الجامعة والبرنامج</p>
-              </div>
-              <div className="step">
-                <div className="step-icon">3</div>
-                <p>تجهيز الأوراق والتقديم</p>
-              </div>
-              <div className="step">
-                <div className="step-icon">4</div>
-                <p>الحصول على القبول الجامعي</p>
-              </div>
-            </div>
-            <button className="consultation-button">
-              احجز استشارة مجانية
-              <FontAwesomeIcon icon={faChevronRight} className="button-icon" />
-            </button>
-          </div>
-        </div>
-      </div>
+      <CTA/>
     </div>
   );
 };

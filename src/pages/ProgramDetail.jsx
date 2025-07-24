@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Header from '../components/Header'
+import Header from '../components/Header';
 import { 
   faChevronLeft, 
   faGraduationCap, 
@@ -12,7 +12,10 @@ import {
   faUser,
   faEnvelope,
   faPhone,
-  faCheckCircle
+  faCheckCircle,
+  faBook,
+  faBriefcase,
+  faCalendarCheck
 } from '@fortawesome/free-solid-svg-icons';
 import './ProgramDetail.css';
 
@@ -26,10 +29,19 @@ const ProgramDetail = () => {
     phone: '',
     message: ''
   });
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  },[])
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
 
   const programs = [
     {
@@ -271,10 +283,7 @@ const ProgramDetail = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // هنا سيتم إرسال البيانات للخادم
     setIsSubmitted(true);
-
-    // إعادة تعيين النموذج بعد 5 ثوانٍ
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({ name: '', email: '', phone: '', message: '' });
@@ -284,170 +293,182 @@ const ProgramDetail = () => {
   return (
     <>
       <Header/>
-    <div className="program-detail-page">
-      {/* زر العودة */}
-      <button onClick={() => navigate('/programs')} className="back-button">
-        <FontAwesomeIcon icon={faChevronLeft} /> العودة
-      </button>
+      <div className="program-detail-page">
+        <button onClick={() => navigate('/programs')} className="back-button">
+          <FontAwesomeIcon icon={faChevronLeft} /> العودة
+        </button>
 
-      {/* معلومات البرنامج */}
-      <div className="program-header">
+        <div className="program-header">
+          <div className="container">
+            <div className="program-title">
+              <h1>{program.name}</h1>
+              <p>{program.universityName}</p>
+            </div>
+
+            <div className="program-meta">
+              <div className="meta-item">
+                <FontAwesomeIcon icon={faGraduationCap} />
+                <span>{program.degreeType}</span>
+              </div>
+              <div className="meta-item">
+                <FontAwesomeIcon icon={faClock} />
+                <span>{program.duration}</span>
+              </div>
+              <div className="meta-item">
+                <FontAwesomeIcon icon={faDollarSign} />
+                <span>{program.tuitionFee}</span>
+              </div>
+              <div className="meta-item">
+                <FontAwesomeIcon icon={faLanguage} />
+                <span>{program.language}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="container">
-          <div className="program-title">
-            <h1>{program.name}</h1>
-            <p>{program.universityName}</p>
-          </div>
-
-          <div className="program-meta">
-            <div className="meta-item">
-              <FontAwesomeIcon icon={faGraduationCap} />
-              <span>{program.degreeType}</span>
-            </div>
-            <div className="meta-item">
-              <FontAwesomeIcon icon={faClock} />
-              <span>{program.duration}</span>
-            </div>
-            <div className="meta-item">
-              <FontAwesomeIcon icon={faDollarSign} />
-              <span>{program.tuitionFee}</span>
-            </div>
-            <div className="meta-item">
-              <FontAwesomeIcon icon={faLanguage} />
-              <span>{program.language}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="container">
-        <div className="program-content">
-          <div className="program-details">
-            <div className="program-image-container">
-              <div 
-                className="program-image"
-                style={{ backgroundImage: `url(${program.image})` }}
-              ></div>
-            </div>
-
-            <div className="program-info">
-              <h2>نظرة عامة على البرنامج</h2>
-              <p>{program.longDescription}</p>
-
-              <div className="info-section">
-                <h3>متطلبات القبول</h3>
-                <ul>
-                  {program.requirements.map((req, index) => (
-                    <li key={index}>{req}</li>
-                  ))}
-                </ul>
+          <div className="program-content">
+            <div className="program-details">
+              <div className="program-image-container">
+                <div 
+                  className="program-image"
+                  style={{ backgroundImage: `url(${program.image})` }}
+                ></div>
               </div>
 
-              <div className="info-section">
-                <h3>فرص العمل بعد التخرج</h3>
-                <ul>
-                  {program.careerOpportunities.map((opp, index) => (
-                    <li key={index}>{opp}</li>
-                  ))}
-                </ul>
-              </div>
+              <div className="program-info">
+                <h2>نظرة عامة على البرنامج</h2>
+                <p>{program.longDescription}</p>
 
-              <div className="program-dates">
-                <div className="date-card">
-                  <h4>بداية الدراسة</h4>
-                  <p>{program.startDate}</p>
+                <div className="info-sections-grid">
+                  <div className="info-section">
+                    <h3>
+                      <FontAwesomeIcon icon={faBook} className="section-icon" />
+                      متطلبات القبول
+                    </h3>
+                    <ul>
+                      {program.requirements.map((req, index) => (
+                        <li key={index}>{req}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="info-section">
+                    <h3>
+                      <FontAwesomeIcon icon={faBriefcase} className="section-icon" />
+                      فرص العمل بعد التخرج
+                    </h3>
+                    <ul>
+                      {program.careerOpportunities.map((opp, index) => (
+                        <li key={index}>{opp}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <div className="date-card">
-                  <h4>آخر موعد للتقديم</h4>
-                  <p>{program.applicationDeadline}</p>
+
+                <div className="program-dates">
+                  <div className="date-card">
+                    <FontAwesomeIcon icon={faCalendarAlt} className="date-icon" />
+                    <div>
+                      <h4>بداية الدراسة</h4>
+                      <p>{program.startDate}</p>
+                    </div>
+                  </div>
+                  <div className="date-card">
+                    <FontAwesomeIcon icon={faCalendarCheck} className="date-icon" />
+                    <div>
+                      <h4>آخر موعد للتقديم</h4>
+                      <p>{program.applicationDeadline}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* نموذج التقديم */}
-          <div className="application-form">
-            <h2>تقديم طلب الالتحاق</h2>
-            <p>املأ النموذج التالي لتقديم طلب الالتحاق بهذا البرنامج</p>
+            {/* نموذج التقديم */}
+            <div className="application-form">
+              <h2>تقديم طلب الالتحاق</h2>
+              <p>املأ النموذج التالي لتقديم طلب الالتحاق بهذا البرنامج</p>
 
-            {isSubmitted ? (
-              <div className="success-message">
-                <FontAwesomeIcon icon={faCheckCircle} className="success-icon" />
-                <h3>تم استلام طلبك بنجاح!</h3>
-                <p>سيتصل بك مستشارنا التعليمي خلال 24 ساعة لتأكيد تفاصيل طلبك</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label>
-                    <FontAwesomeIcon icon={faUser} />
-                    الاسم الكامل
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="أدخل اسمك الكامل"
-                  />
+              {isSubmitted ? (
+                <div className="success-message">
+                  <FontAwesomeIcon icon={faCheckCircle} className="success-icon" />
+                  <h3>تم استلام طلبك بنجاح!</h3>
+                  <p>سيتصل بك مستشارنا التعليمي خلال 24 ساعة لتأكيد تفاصيل طلبك</p>
                 </div>
+              ) : (
+                <form onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <label>
+                      <FontAwesomeIcon icon={faUser} />
+                      الاسم الكامل
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="أدخل اسمك الكامل"
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label>
-                    <FontAwesomeIcon icon={faEnvelope} />
-                    البريد الإلكتروني
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="أدخل بريدك الإلكتروني"
-                  />
-                </div>
+                  <div className="form-group">
+                    <label>
+                      <FontAwesomeIcon icon={faEnvelope} />
+                      البريد الإلكتروني
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="أدخل بريدك الإلكتروني"
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label>
-                    <FontAwesomeIcon icon={faPhone} />
-                    رقم الهاتف
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="أدخل رقم هاتفك"
-                  />
-                </div>
+                  <div className="form-group">
+                    <label>
+                      <FontAwesomeIcon icon={faPhone} />
+                      رقم الهاتف
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="أدخل رقم هاتفك"
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label>رسالة إضافية (اختياري)</label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="أضف أي معلومات إضافية تريد مشاركتها معنا"
-                    rows="4"
-                  ></textarea>
-                </div>
+                  <div className="form-group">
+                    <label>رسالة إضافية (اختياري)</label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="أضف أي معلومات إضافية تريد مشاركتها معنا"
+                      rows="4"
+                    ></textarea>
+                  </div>
 
-                <div className="form-note">
-                  <p>بعد تقديم الطلب، سيتصل بك مستشارنا التعليمي خلال 24 ساعة لتأكيد تفاصيل طلبك والخطوات التالية.</p>
-                </div>
+                  <div className="form-note">
+                    <p>بعد تقديم الطلب، سيتصل بك مستشارنا التعليمي خلال 24 ساعة لتأكيد تفاصيل طلبك والخطوات التالية.</p>
+                  </div>
 
-                <button type="submit" className="submit-button">
-                  تقديم الطلب الآن
-                </button>
-              </form>
-            )}
+                  <button type="submit" className="submit-button">
+                    تقديم الطلب الآن
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-      </>
-      );
+    </>
+  );
 };
 
 export default ProgramDetail;

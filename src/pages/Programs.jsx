@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// src/pages/Programs.jsx
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Header from '../components/Header';
@@ -12,16 +13,38 @@ import {
   faChevronRight,
   faFilter,
   faTimes,
+  faStar,
+  faBookOpen,
+  faUserGraduate
 } from '@fortawesome/free-solid-svg-icons';
 import './Programs.css';
 
 const Programs = () => {
+  
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDegree, setSelectedDegree] = useState('all');
   const [selectedLanguage, setSelectedLanguage] = useState('all');
+  const [selectedDuration, setSelectedDuration] = useState('all');
   const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // بيانات البرامج الدراسية
+  // كشف حجم الشاشة
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  },[])
+
   const programs = [
     {
       id: 1,
@@ -35,7 +58,8 @@ const Programs = () => {
       language: "الإنجليزية",
       startDate: "سبتمبر 2024",
       applicationDeadline: "31 يوليو 2024",
-      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1453&q=80"
+      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1453&q=80",
+      rating: 4.9
     },
     {
       id: 2,
@@ -49,7 +73,8 @@ const Programs = () => {
       language: "الإنجليزية",
       startDate: "سبتمبر 2024",
       applicationDeadline: "31 يوليو 2024",
-      image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
+      image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
+      rating: 4.7
     },
     {
       id: 3,
@@ -63,7 +88,8 @@ const Programs = () => {
       language: "الإنجليزية",
       startDate: "سبتمبر 2024",
       applicationDeadline: "15 أغسطس 2024",
-      image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      rating: 4.8
     },
     {
       id: 4,
@@ -77,7 +103,8 @@ const Programs = () => {
       language: "الإنجليزية",
       startDate: "سبتمبر 2024",
       applicationDeadline: "20 أغسطس 2024",
-      image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"
+      image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
+      rating: 4.6
     },
     {
       id: 5,
@@ -91,7 +118,8 @@ const Programs = () => {
       language: "الإنجليزية",
       startDate: "سبتمبر 2024",
       applicationDeadline: "10 أغسطس 2024",
-      image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      rating: 4.5
     },
     {
       id: 6,
@@ -105,35 +133,8 @@ const Programs = () => {
       language: "الإنجليزية",
       startDate: "سبتمبر 2024",
       applicationDeadline: "25 يوليو 2024",
-      image: "https://images.unsplash.com/photo-1588774069410-84ae30757c8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1494&q=80"
-    },
-    {
-      id: 7,
-      universityId: 6,
-      universityName: "جامعة آسيا الوسطى",
-      name: "الاقتصاد والتمويل",
-      description: "برنامج متخصص في الاقتصاد والتمويل يغطي الأسواق المالية والاستثمارات والاقتصاد العالمي.",
-      duration: "4 سنوات",
-      degreeType: "بكالوريوس",
-      tuitionFee: "3100 دولار سنوياً",
-      language: "الإنجليزية",
-      startDate: "سبتمبر 2024",
-      applicationDeadline: "5 أغسطس 2024",
-      image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-    },
-    {
-      id: 8,
-      universityId: 7,
-      universityName: "الجامعة الوطنية في أوزبكستان",
-      name: "الهندسة الكهربائية",
-      description: "برنامج متقدم في الهندسة الكهربائية مع التركيز على أنظمة الطاقة المتجددة والشبكات الذكية.",
-      duration: "4 سنوات",
-      degreeType: "بكالوريوس",
-      tuitionFee: "3300 دولار سنوياً",
-      language: "الإنجليزية",
-      startDate: "سبتمبر 2024",
-      applicationDeadline: "15 أغسطس 2024",
-      image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      image: "https://images.unsplash.com/photo-1588774069410-84ae30757c8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1494&q=80",
+      rating: 4.9
     }
   ];
 
@@ -144,8 +145,9 @@ const Programs = () => {
 
     const matchesDegree = selectedDegree === 'all' || program.degreeType === selectedDegree;
     const matchesLanguage = selectedLanguage === 'all' || program.language === selectedLanguage;
+    const matchesDuration = selectedDuration === 'all' || program.duration.includes(selectedDuration);
 
-    return matchesSearch && matchesDegree && matchesLanguage;
+    return matchesSearch && matchesDegree && matchesLanguage && matchesDuration;
   });
 
   return (
@@ -154,17 +156,18 @@ const Programs = () => {
       <div className="programs-page">
         {/* قسم البحث والتصفية */}
         <div className="programs-hero">
-          <div className="hero-overlay"></div>
           <div className="hero-content">
-            <h1>اكتشف البرامج الدراسية</h1>
-            <p>ابحث عن البرنامج المثالي لمستقبلك الأكاديمي والمهني</p>
+            <div className="hero-titles">
+              <h1>اكتشف البرامج الدراسية</h1>
+              <p>ابحث عن البرنامج المثالي لمستقبلك الأكاديمي والمهني</p>
+            </div>
 
             <div className="search-container">
               <div className="search-input">
                 <FontAwesomeIcon icon={faSearch} />
                 <input
                   type="text"
-                  placeholder="ابحث عن برنامج دراسي..."
+                  placeholder="ابحث عن برنامج دراسي أو جامعة..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -176,6 +179,21 @@ const Programs = () => {
                     <FontAwesomeIcon icon={faTimes} />
                   </button>
                 )}
+              </div>
+            </div>
+
+            <div className="hero-stats">
+              <div className="stat-item">
+                <FontAwesomeIcon icon={faBookOpen} />
+                <span>6+ برامج دراسية</span>
+              </div>
+              <div className="stat-item">
+                <FontAwesomeIcon icon={faGraduationCap} />
+                <span>5+ جامعات</span>
+              </div>
+              <div className="stat-item">
+                <FontAwesomeIcon icon={faUserGraduate} />
+                <span>4000+ طالب</span>
               </div>
             </div>
           </div>
@@ -222,11 +240,25 @@ const Programs = () => {
                 </select>
               </div>
 
+              <div className="filter-group">
+                <label>مدة الدراسة:</label>
+                <select 
+                  value={selectedDuration} 
+                  onChange={(e) => setSelectedDuration(e.target.value)}
+                >
+                  <option value="all">جميع المدد</option>
+                  <option value="4">4 سنوات</option>
+                  <option value="5">5 سنوات</option>
+                  <option value="6">6 سنوات</option>
+                </select>
+              </div>
+
               <button 
                 className="close-modal"
                 onClick={() => setShowMobileFilters(false)}
               >
                 <FontAwesomeIcon icon={faTimes} />
+                إغلاق
               </button>
             </div>
           </div>
@@ -236,8 +268,13 @@ const Programs = () => {
         <div className="programs-section">
           <div className="container">
             <div className="section-header">
-              <h2>البرامج <span className="gold-text">الدراسية</span></h2>
-              <p>تصفح مجموعة متنوعة من البرامج الأكاديمية المقدمة من أفضل الجامعات</p>
+              <div className="section-title">
+                <h2>البرامج <span className="gold-text">الدراسية</span></h2>
+                <p>تصفح مجموعة متنوعة من البرامج الأكاديمية المقدمة من أفضل الجامعات</p>
+              </div>
+              <div className="results-count">
+                <span>عرض <strong>{filteredPrograms.length}</strong> من أصل <strong>{programs.length}</strong> برنامج</span>
+              </div>
             </div>
 
             {filteredPrograms.length === 0 ? (
@@ -253,6 +290,7 @@ const Programs = () => {
                     setSearchTerm('');
                     setSelectedDegree('all');
                     setSelectedLanguage('all');
+                    setSelectedDuration('all');
                   }}
                 >
                   إعادة تعيين الفلاتر
@@ -269,6 +307,10 @@ const Programs = () => {
                       <div className="program-badge">
                         {program.degreeType}
                       </div>
+                      <div className="program-rating">
+                        <FontAwesomeIcon icon={faStar} />
+                        <span>{program.rating}</span>
+                      </div>
                     </div>
 
                     <div className="program-content">
@@ -283,11 +325,6 @@ const Programs = () => {
                       <p className="program-description">{program.description}</p>
 
                       <div className="program-details">
-                        
-                        <div className="detail">
-                          <FontAwesomeIcon icon={faGraduationCap} />
-                          <span>{program.universityName}</span>
-                        </div>
                         <div className="detail">
                           <FontAwesomeIcon icon={faClock} />
                           <span>{program.duration}</span>
@@ -312,7 +349,7 @@ const Programs = () => {
                           <span>آخر موعد: {program.applicationDeadline}</span>
                         </div>
                         <Link to={`/program/${program.id}`} className="program-button">
-                          التفاصيل والتقديم
+                          {isMobile ? "التقديم" : "التفاصيل والتقديم"}
                           <FontAwesomeIcon icon={faChevronRight} />
                         </Link>
                       </div>
@@ -321,6 +358,20 @@ const Programs = () => {
                 ))}
               </div>
             )}
+          </div>
+        </div>
+
+        {/* دعوة للاتصال */}
+        <div className="cta-section">
+          <div className="container">
+            <div className="cta-content">
+              <h3>هل تحتاج مساعدة في اختيار البرنامج الدراسي المناسب؟</h3>
+              <p>فريقنا من المستشارين التعليميين متاح لمساعدتك في اتخاذ القرار الأنسب لمستقبلك الأكاديمي</p>
+              <button className="cta-button">
+                تواصل مع مستشار تعليمي
+                <FontAwesomeIcon icon={faChevronRight} />
+              </button>
+            </div>
           </div>
         </div>
       </div>

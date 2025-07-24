@@ -22,7 +22,7 @@ const Header = () => {
 
   const navItems = [
     { id: 'home', icon: faHome, label: 'الرئيسية', path: '/' },
-    { id: 'courses', icon: faBookOpen, label: 'الدورات', path: 'programs' },
+    { id: 'courses', icon: faBookOpen, label: 'البرامج الدراسية', path: '/programs' },
     { id: 'articles', icon: faGlobeAmericas, label: 'المقالات', path: '/articles' },
     { id: 'about', icon: faUsers, label: 'من نحن', path: '/about' },
     { id: 'contact', icon: faEnvelope, label: 'اتصل بنا', path: '/contact' }
