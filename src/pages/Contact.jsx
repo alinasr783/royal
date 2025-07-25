@@ -6,14 +6,13 @@ import {
   faLocationDot,
   faPaperPlane,
   faCheckCircle,
-  faChevronDown
+  faChevronDown,
+  faEnvelopeOpenText
 } from '@fortawesome/free-solid-svg-icons';
 import { 
   faWhatsapp,
   faFacebook,
-  faInstagram,
-  faTiktok,
-  faYoutube
+  faGoogle
 } from '@fortawesome/free-brands-svg-icons';
 import Header from "../components/Header";
 import './Contact.css';
@@ -28,10 +27,10 @@ const Contact = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('egypt');
   const [activeFaq, setActiveFaq] = useState(null);
   const [error, setError] = useState('');
+  const [showEmailInfo, setShowEmailInfo] = useState(false);
   const formRef = useRef(null);
 
   useEffect(() => {
@@ -43,47 +42,46 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
     setError('');
 
     // التحقق من صحة البريد الإلكتروني
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setError('البريد الإلكتروني غير صحيح');
-      setIsLoading(false);
       return;
     }
 
-    try {
-      // إرسال البيانات إلى الخادم
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          service_id: 'service_4y4s1y8',
-          template_id: 'template_1q3b6jo',
-          user_id: 'Kk9R2vqFvF8d9vDdJ',
-          template_params: {
-            to_email: 'dr.mosaabalothman2@gmail.com',
-            from_name: formData.name,
-            from_email: formData.email,
-            phone: formData.phone,
-            subject: formData.subject,
-            message: formData.message
-          }
-        })
-      });
+    // بناء نص الرسالة بشكل منظم
+    const bodyText = `
+اسم المرسل: ${formData.name}
+البريد الإلكتروني: ${formData.email}
+رقم الهاتف: ${formData.phone}
 
-      if (!response.ok) {
-        throw new Error('فشل في إرسال الرسالة');
-      }
+موضوع الرسالة:
+${formData.subject}
 
-      setIsLoading(false);
+نص الرسالة:
+${formData.message}
+    `;
+
+    // بناء رابط Gmail
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=dr.mosaabalothman2@gmail.com&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(bodyText)}`;
+
+    // إظهار رسالة توضيحية قبل فتح Gmail
+    setShowEmailInfo(true);
+
+    // تأخير فتح نافذة Gmail لرؤية الرسالة التوضيحية
+    setTimeout(() => {
+      // فتح نافذة جديدة لـ Gmail
+      window.open(gmailUrl, '_blank');
+      setShowEmailInfo(false);
+
+      // إظهار رسالة نجاح
       setIsSubmitted(true);
+
+      // إعادة تعيين النموذج
       setFormData({
         name: '',
         email: '',
@@ -92,13 +90,9 @@ const Contact = () => {
         message: ''
       });
 
-      // Reset success message after 5 seconds
+      // إخفاء رسالة النجاح بعد 5 ثوان
       setTimeout(() => setIsSubmitted(false), 5000);
-    } catch (err) {
-      setIsLoading(false);
-      setError('حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى.');
-      console.error('Error sending email:', err);
-    }
+    }, 2000);
   };
 
   const toggleFaq = (index) => {
@@ -148,8 +142,21 @@ const Contact = () => {
             {isSubmitted ? (
               <div className="success-message">
                 <FontAwesomeIcon icon={faCheckCircle} className="success-icon" />
-                <h3>تم إرسال رسالتك بنجاح!</h3>
-                <p>شكرًا لتواصلك معنا، سنرد عليك في أقرب وقت.</p>
+                <h3>تم إعداد رسالتك بنجاح!</h3>
+                <p>تم فتح نافذة Gmail لتتمكن من إرسال رسالتك مباشرةً.</p>
+                <p className="success-tip">
+                  <FontAwesomeIcon icon={faEnvelopeOpenText} />
+                  <span>يرجى الضغط على زر الإرسال في نافذة Gmail لإكمال العملية</span>
+                </p>
+              </div>
+            ) : showEmailInfo ? (
+              <div className="gmail-info">
+                <div className="gmail-icon">
+                  <FontAwesomeIcon icon={faGoogle} />
+                </div>
+                <h3>جاري فتح تطبيق Gmail...</h3>
+                <p>سيتم فتح نافذة جديدة لتطبيق Gmail لإكمال عملية إرسال رسالتك</p>
+                <div className="loading-spinner"></div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="contact-form" ref={formRef}>
@@ -225,17 +232,15 @@ const Contact = () => {
                 <button 
                   type="submit" 
                   className="submit-btn"
-                  disabled={isLoading}
                 >
-                  {isLoading ? (
-                    <span>جاري الإرسال...</span>
-                  ) : (
-                    <>
-                      <FontAwesomeIcon icon={faPaperPlane} />
-                      <span>إرسال الرسالة</span>
-                    </>
-                  )}
+                  <FontAwesomeIcon icon={faPaperPlane} />
+                  <span>إرسال الرسالة عبر Gmail</span>
                 </button>
+
+                <div className="form-note">
+                  <FontAwesomeIcon icon={faGoogle} className="google-icon" />
+                  <span>سيتم فتح نافذة Gmail لإكمال عملية الإرسال</span>
+                </div>
               </form>
             )}
           </section>

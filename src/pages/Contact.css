@@ -886,4 +886,103 @@ body {
 .youtube:hover {
   box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
 }
+/* Contact.css - التحديثات الجديدة */
 
+/* رسالة توضيحية عند فتح Gmail */
+.gmail-info {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.gmail-icon {
+  font-size: 3.5rem;
+  color: #4285F4;
+  margin-bottom: 20px;
+}
+
+.gmail-info h3 {
+  color: #1a73e8;
+  margin-bottom: 15px;
+}
+
+.gmail-info p {
+  color: #5f6368;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(66, 133, 244, 0.2);
+  border-top: 5px solid #4285F4;
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* تحسين رسالة النجاح */
+.success-message {
+  background: #e8f5e9;
+  border-left: 5px solid #4caf50;
+}
+
+.success-icon {
+  color: #4caf50;
+  font-size: 3rem;
+}
+
+.success-tip {
+  background: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* ملاحظة تحت زر الإرسال */
+.form-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  color: #5f6368;
+  font-size: 0.9rem;
+  background: #f8f9fa;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border-left: 3px solid #4285F4;
+}
+
+.google-icon {
+  color: #4285F4;
+  font-size: 1.2rem;
+}
+
+/* زر الإرسال المحسّن */
+.submit-btn {
+  background: linear-gradient(135deg, #1a73e8, #4285f4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #0d5bb8, #3367d6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+}
