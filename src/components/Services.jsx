@@ -103,12 +103,12 @@ const Services = ({ services = [] }) => {
             <div className="service-content">
               <h3 className="service-name">{service.name}</h3>
               <p className="service-description">{service.description}</p>
-              <button className="service-link">
+              {/* <button className="service-link">
                 اكتشف المزيد
                 <span className="link-icon">
                   <FontAwesomeIcon icon={faChevronRight} />
                 </span>
-              </button>
+              </button> */}
             </div>
           </div>
         ))}

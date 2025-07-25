@@ -26,7 +26,7 @@ const CTA = () => {
               <div className="stat-label">دولة حول العالم</div>
             </div>
             <div className="stat-item">
-              <div className="stat-number">98%</div>
+              <div className="stat-number">58%</div>
               <div className="stat-label">نسبة القبول</div>
             </div>
             <div className="stat-item">

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import CTA from '../components/CTA'
 import Header from '../components/Header';
 import { 
   faSearch, 
@@ -20,7 +21,7 @@ import {
 import './Programs.css';
 
 const Programs = () => {
-  
+
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDegree, setSelectedDegree] = useState('all');
   const [selectedLanguage, setSelectedLanguage] = useState('all');
@@ -41,100 +42,136 @@ const Programs = () => {
       window.removeEventListener('resize', checkIsMobile);
     };
   }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   },[])
 
   const programs = [
+    // برامج مصر
     {
       id: 1,
       universityId: 1,
-      universityName: "جامعة موسكو الحكومية",
+      universityName: "جامعة القاهرة",
       name: "الطب البشري",
       description: "برنامج متكامل في الطب البشري لمدة 6 سنوات، يقدم تعليماً طبياً عالي الجودة وفق المعايير الدولية.",
       duration: "6 سنوات",
       degreeType: "بكالوريوس",
-      tuitionFee: "3500 دولار سنوياً",
+      tuitionFee: "2500 دولار سنوياً",
       language: "الإنجليزية",
       startDate: "سبتمبر 2024",
       applicationDeadline: "31 يوليو 2024",
-      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1453&q=80",
-      rating: 4.9
+      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      rating: 4.8
     },
     {
       id: 2,
       universityId: 1,
-      universityName: "جامعة موسكو الحكومية",
+      universityName: "جامعة القاهرة",
       name: "هندسة الحاسوب",
       description: "برنامج متقدم في هندسة الحاسوب يركز على الذكاء الاصطناعي وأمن المعلومات وتطوير البرمجيات.",
       duration: "4 سنوات",
       degreeType: "بكالوريوس",
-      tuitionFee: "3200 دولار سنوياً",
-      language: "الإنجليزية",
+      tuitionFee: "2200 دولار سنوياً",
+      language: "العربية",
       startDate: "سبتمبر 2024",
       applicationDeadline: "31 يوليو 2024",
       image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
-      rating: 4.7
+      rating: 4.6
     },
     {
       id: 3,
       universityId: 2,
-      universityName: "جامعة سانت بطرسبرغ",
+      universityName: "الجامعة الأمريكية بالقاهرة",
       name: "إدارة الأعمال الدولية",
       description: "برنامج متخصص في إدارة الأعمال الدولية مع التركيز على الأسواق العالمية والاستراتيجيات الدولية.",
       duration: "4 سنوات",
       degreeType: "بكالوريوس",
-      tuitionFee: "3000 دولار سنوياً",
+      tuitionFee: "3000-4000 دولار سنوياً",
       language: "الإنجليزية",
       startDate: "سبتمبر 2024",
       applicationDeadline: "15 أغسطس 2024",
       image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-      rating: 4.8
+      rating: 4.7
     },
+
+    // برامج سوريا
     {
       id: 4,
       universityId: 3,
-      universityName: "جامعة الفارابي الوطنية",
+      universityName: "جامعة دمشق",
       name: "الصيدلة السريرية",
       description: "برنامج متقدم في الصيدلة السريرية يعد الطلاب لمهنة الصيدلة في المؤسسات الصحية المختلفة.",
       duration: "5 سنوات",
       degreeType: "بكالوريوس",
-      tuitionFee: "2800 دولار سنوياً",
-      language: "الإنجليزية",
+      tuitionFee: "1500 دولار سنوياً",
+      language: "العربية",
       startDate: "سبتمبر 2024",
       applicationDeadline: "20 أغسطس 2024",
       image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
-      rating: 4.6
+      rating: 4.5
     },
     {
       id: 5,
       universityId: 4,
-      universityName: "جامعة نزارباييف",
-      name: "الهندسة الميكانيكية",
-      description: "برنامج شامل في الهندسة الميكانيكية مع التركيز على التصميم والتصنيع والروبوتات.",
-      duration: "4 سنوات",
+      universityName: "جامعة حلب",
+      name: "الهندسة المدنية",
+      description: "برنامج شامل في الهندسة المدنية مع التركيز على التصميم والإنشاءات وإدارة المشاريع.",
+      duration: "5 سنوات",
       degreeType: "بكالوريوس",
-      tuitionFee: "3400 دولار سنوياً",
-      language: "الإنجليزية",
+      tuitionFee: "1800 دولار سنوياً",
+      language: "العربية",
       startDate: "سبتمبر 2024",
       applicationDeadline: "10 أغسطس 2024",
       image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-      rating: 4.5
+      rating: 4.4
     },
+
+    // برامج الصين
     {
       id: 6,
       universityId: 5,
-      universityName: "الجامعة الدولية في قيرغيزستان",
+      universityName: "جامعة بكين",
       name: "طب الأسنان",
       description: "برنامج متكامل في طب الأسنان مع تدريب عملي مكثف في عيادات الجامعة والمستشفيات.",
       duration: "5 سنوات",
       degreeType: "بكالوريوس",
-      tuitionFee: "2900 دولار سنوياً",
+      tuitionFee: "4500 دولار سنوياً",
       language: "الإنجليزية",
       startDate: "سبتمبر 2024",
       applicationDeadline: "25 يوليو 2024",
       image: "https://images.unsplash.com/photo-1588774069410-84ae30757c8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1494&q=80",
       rating: 4.9
+    },
+    {
+      id: 7,
+      universityId: 6,
+      universityName: "جامعة تشينغهوا",
+      name: "هندسة الذكاء الاصطناعي",
+      description: "برنامج رائد في هندسة الذكاء الاصطناعي مع التركيز على التعلم الآلي ومعالجة اللغات الطبيعية.",
+      duration: "4 سنوات",
+      degreeType: "بكالوريوس",
+      tuitionFee: "5000 دولار سنوياً",
+      language: "الإنجليزية",
+      startDate: "سبتمبر 2024",
+      applicationDeadline: "30 يونيو 2024",
+      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      rating: 4.8
+    },
+    {
+      id: 8,
+      universityId: 6,
+      universityName: "جامعة تشينغهوا",
+      name: "إدارة الأعمال العالمية",
+      description: "برنامج متكامل في إدارة الأعمال العالمية مع دراسة حالات من الأسواق الصينية والدولية.",
+      duration: "4 سنوات",
+      degreeType: "بكالوريوس",
+      tuitionFee: "4800 دولار سنوياً",
+      language: "الإنجليزية",
+      startDate: "سبتمبر 2024",
+      applicationDeadline: "30 يونيو 2024",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      rating: 4.7
     }
   ];
 
@@ -185,15 +222,15 @@ const Programs = () => {
             <div className="hero-stats">
               <div className="stat-item">
                 <FontAwesomeIcon icon={faBookOpen} />
-                <span>6+ برامج دراسية</span>
+                <span>{programs.length}+ برامج دراسية</span>
               </div>
               <div className="stat-item">
                 <FontAwesomeIcon icon={faGraduationCap} />
-                <span>5+ جامعات</span>
+                <span>6+ جامعات</span>
               </div>
               <div className="stat-item">
                 <FontAwesomeIcon icon={faUserGraduate} />
-                <span>4000+ طالب</span>
+                <span>5000+ طالب</span>
               </div>
             </div>
           </div>
@@ -235,8 +272,8 @@ const Programs = () => {
                 >
                   <option value="all">جميع اللغات</option>
                   <option value="الإنجليزية">الإنجليزية</option>
-                  <option value="الروسية">الروسية</option>
                   <option value="العربية">العربية</option>
+                  <option value="الصينية">الصينية</option>
                 </select>
               </div>
 
@@ -362,7 +399,7 @@ const Programs = () => {
         </div>
 
         {/* دعوة للاتصال */}
-        <div className="cta-section">
+        {/* <div className="cta-section">
           <div className="container">
             <div className="cta-content">
               <h3>هل تحتاج مساعدة في اختيار البرنامج الدراسي المناسب؟</h3>
@@ -373,8 +410,9 @@ const Programs = () => {
               </button>
             </div>
           </div>
-        </div>
-      </div>
+        </div>*/}
+        <CTA />
+      </div> 
     </>
   );
 };
