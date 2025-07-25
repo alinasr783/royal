@@ -37,16 +37,16 @@ const CTA = () => {
         </div>
 
         <div className="cta-buttons">
-          <button className="cta-btn primary">
+          <button className="cta-btn primary" onClick={()=>navigate("/contact")}>
             <span className="icon">
               <FontAwesomeIcon icon={faChevronLeft} />
             </span>
             احجز استشارة الآن
           </button>
 
-          <button className="cta-btn secondary">
+          <button className="cta-btn secondary" onClick={()=>navigate("/programs")}>
             <span className="icon">
-              <FontAwesomeIcon icon={faArrowLeft} onClick={()=>navigate("/programs")}/>
+              <FontAwesomeIcon icon={faArrowLeft}/>
             </span>
             تصفح البرامج الدراسية
           </button>

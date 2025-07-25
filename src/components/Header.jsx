@@ -115,7 +115,7 @@ const Header = () => {
               );
             })}
 
-            <button className="mobile-cta-button">
+            <button className="mobile-cta-button" onClick={()=>navigate("/contact")}>
               احجز استشارة مجانية
             </button>
           </div>

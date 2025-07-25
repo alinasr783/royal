@@ -5,6 +5,10 @@ import Nation from './pages/Nation';
 import Programs from './pages/Programs'; // الجديد
 import ProgramDetail from './pages/ProgramDetail'; // الجديد
 import Destination from './pages/Destination';
+import Contact from './pages/Contact';
+import About from './pages/About';
+import Articles from './pages/Articles';
+import Article from './pages/Article';
 
 const App = () => {
   return (
@@ -14,6 +18,10 @@ const App = () => {
       <Route path="/programs" element={<Programs />} />
       <Route path="/program/:id" element={<ProgramDetail />} />
       <Route path="/destination" element={<Destination />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/articles" element={<Articles />} />
+      <Route path="/articles/:id" element={<Article />} />
     </Routes>
   );
 };

@@ -53,7 +53,7 @@ const Hero = () => {
               اكتشف البرامج الدراسية
               <FontAwesomeIcon icon={faChevronRight} className="btn-icon" />
             </button>
-            <button className="secondary-btn">
+            <button className="secondary-btn" onClick={()=>navigate("/contact")}>
               احجز استشارة مجانية
               <FontAwesomeIcon icon={faChevronRight} className="btn-icon" />
             </button>
