@@ -714,6 +714,55 @@
   }
 }
 
+/* تحسينات إضافية للشاشات الصغيرة جدًا */
+@media (max-width: 320px) {
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .search-box {
+    max-width: 95%;
+  }
+
+  .destination-card {
+    margin: 0 5px;
+  }
+
+  .card-details {
+    padding: 15px;
+  }
+
+  .detail-item {
+    font-size: 0.85rem;
+    gap: 8px;
+  }
+
+  .card-button {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+}
+
+/* تحسين الأداء للشاشات الكبيرة */
+@media (min-width: 1200px) {
+  .destinations-grid {
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 50px;
+  }
+
+  .hero-content {
+    max-width: 900px;
+  }
+
+  .search-box {
+    max-width: 800px;
+  }
+}
+
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
