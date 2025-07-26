@@ -27,6 +27,35 @@ const StudyDestinations = () => {
       universities: "3000+ جامعة",
       description: "الصين من أبرز الوجهات التعليمية في العالم مع جامعات مصنفة بين الأفضل عالميًا. تقدم الصين تعليمًا عالي الجودة بتكاليف معقولة وبرامج باللغة الإنجليزية مع فرص تدريب مميزة في شركات عالمية.",
       image: "https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    // --- الدول الجديدة ---
+    {
+      id: 4,
+      name: "روسيا",
+      universities: "1000+ جامعة",
+      description: "روسيا تضم جامعات عريقة مثل جامعة موسكو الحكومية (MSU) ومعهد موسكو للفيزياء والتكنولوجيا (MIPT). تشتهر ببرامج الطب والهندسة وعلوم الحاسب، وتقدم برامج بالروسية والإنجليزية مع فرص منح دراسية.",
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 5,
+      name: "بلاروسيا",
+      universities: "50+ جامعة",
+      description: "بلاروسيا وجهة مميزة لدراسة الطب والهندسة والصيدلة، من أشهر جامعاتها جامعة بيلاروسيا الحكومية وجامعة الطب الحكومية في مينسك. التعليم عالي الجودة والتكاليف منخفضة نسبيًا.",
+      image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 6,
+      name: "طاجيكستان",
+      universities: "20+ جامعة",
+      description: "تشتهر طاجيكستان بجامعاتها الطبية مثل جامعة طاجيكستان الطبية الحكومية. تقدم برامج في الطب والهندسة والاقتصاد بتكاليف منخفضة وبيئة دراسية مناسبة للطلاب العرب.",
+      image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 7,
+      name: "تركيا",
+      universities: "200+ جامعة",
+      description: "تركيا تضم جامعات مرموقة مثل جامعة إسطنبول وجامعة الشرق الأوسط التقنية (METU). تشتهر ببرامج الطب والهندسة وإدارة الأعمال، وتقدم برامج بالتركية والإنجليزية وبيئة طلابية متنوعة.",
+      image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=800&q=80"
     }
   ];
 
@@ -62,7 +91,14 @@ const StudyDestinations = () => {
               <div className="destination-features">
                 <div className="feature">
                   <FontAwesomeIcon icon={faLanguage} className="feature-icon" />
-                  <span>{destination.id === 3 ? "الإنجليزية والصينية" : "العربية والإنجليزية"}</span>
+                  <span>{
+                    destination.name === "الصين" ? "الإنجليزية والصينية" :
+                    destination.name === "روسيا" ? "الروسية والإنجليزية" :
+                    destination.name === "بلاروسيا" ? "الروسية والإنجليزية" :
+                    destination.name === "طاجيكستان" ? "الطاجيكية والروسية" :
+                    destination.name === "تركيا" ? "التركية والإنجليزية" :
+                    "العربية والإنجليزية"
+                  }</span>
                 </div>
                 <div className="feature">
                   <FontAwesomeIcon icon={faDollarSign} className="feature-icon" />
