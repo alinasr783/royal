@@ -258,7 +258,7 @@ const ProgramDetail = () => {
     const encodedMessage = encodeURIComponent(message);
 
     // إنشاء رابط واتساب
-    const whatsappUrl = `https://wa.me/00963953210552?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/201012696180?text=${encodedMessage}`;
 
     // فتح واتساب في نافذة جديدة
     window.open(whatsappUrl, '_blank');
