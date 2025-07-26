@@ -332,7 +332,7 @@ ${formData.message}
 
               <div className="social-icons-grid">
                 <a 
-                  href="https://wa.me/996553080522" 
+                  href="https://wa.me/201012696180" 
                   className="social-icon whatsapp"
                   aria-label="واتساب"
                 >

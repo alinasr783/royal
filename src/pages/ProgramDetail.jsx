@@ -10,23 +10,22 @@ import {
   faLanguage,
   faCalendarAlt,
   faUser,
-  faEnvelope,
-  faPhone,
   faCheckCircle,
   faBook,
   faBriefcase,
   faCalendarCheck
 } from '@fortawesome/free-solid-svg-icons';
+// استيراد أيقونة واتساب من الحزمة الصحيحة
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import './ProgramDetail.css';
 
 const ProgramDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isWhatsappSending, setIsWhatsappSending] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
-    phone: '',
     message: ''
   });
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -237,13 +236,44 @@ const ProgramDetail = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitted(true);
+  const sendWhatsappMessage = () => {
+    if (!formData.name.trim()) {
+      alert("يرجى إدخال اسمك قبل الإرسال");
+      return;
+    }
+
+    setIsWhatsappSending(true);
+
+    // بناء رسالة واتساب
+    const message = `طلب التحاق بالبرنامج الدراسي:
+
+البرنامج: ${program.name}
+الجامعة: ${program.universityName}
+
+اسم الطالب: ${formData.name}
+
+الرسالة: ${formData.message || 'لا توجد رسالة إضافية'}`;
+
+    // ترميز الرسالة لاستخدامها في رابط واتساب
+    const encodedMessage = encodeURIComponent(message);
+
+    // إنشاء رابط واتساب
+    const whatsappUrl = `https://wa.me/00963953210552?text=${encodedMessage}`;
+
+    // فتح واتساب في نافذة جديدة
+    window.open(whatsappUrl, '_blank');
+
+    // إعادة تعيين الحقول وإظهار رسالة النجاح
     setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', message: '' });
-    }, 5000);
+      setIsWhatsappSending(false);
+      setIsSubmitted(true);
+      setFormData({ name: '', message: '' });
+
+      // إخفاء رسالة النجاح بعد 5 ثوان
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    }, 1000);
   };
 
   return (
@@ -349,11 +379,11 @@ const ProgramDetail = () => {
               {isSubmitted ? (
                 <div className="success-message">
                   <FontAwesomeIcon icon={faCheckCircle} className="success-icon" />
-                  <h3>تم استلام طلبك بنجاح!</h3>
-                  <p>سيتصل بك مستشارنا التعليمي خلال 24 ساعة لتأكيد تفاصيل طلبك</p>
+                  <h3>تم إرسال طلبك بنجاح!</h3>
+                  <p>سيتم التواصل معك قريباً عبر واتساب لتأكيد تفاصيل طلبك</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(e) => e.preventDefault()}>
                   <div className="form-group">
                     <label>
                       <FontAwesomeIcon icon={faUser} />
@@ -370,36 +400,6 @@ const ProgramDetail = () => {
                   </div>
 
                   <div className="form-group">
-                    <label>
-                      <FontAwesomeIcon icon={faEnvelope} />
-                      البريد الإلكتروني
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="أدخل بريدك الإلكتروني"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label>
-                      <FontAwesomeIcon icon={faPhone} />
-                      رقم الهاتف
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="أدخل رقم هاتفك"
-                    />
-                  </div>
-
-                  <div className="form-group">
                     <label>رسالة إضافية (اختياري)</label>
                     <textarea
                       name="message"
@@ -411,11 +411,26 @@ const ProgramDetail = () => {
                   </div>
 
                   <div className="form-note">
-                    <p>بعد تقديم الطلب، سيتصل بك مستشارنا التعليمي خلال 24 ساعة لتأكيد تفاصيل طلبك والخطوات التالية.</p>
+                    <p>بعد تقديم الطلب، سيتصل بك مستشارنا التعليمي عبر واتساب لتأكيد تفاصيل طلبك والخطوات التالية.</p>
                   </div>
 
-                  <button type="submit" className="submit-button">
-                    تقديم الطلب الآن
+                  <button 
+                    type="button" 
+                    className={`submit-button whatsapp-button ${isWhatsappSending ? 'sending' : ''}`}
+                    onClick={sendWhatsappMessage}
+                    disabled={isWhatsappSending}
+                  >
+                    {isWhatsappSending ? (
+                      <>
+                        <span className="spinner"></span>
+                        جارٍ الإرسال...
+                      </>
+                    ) : (
+                      <>
+                        <FontAwesomeIcon icon={faWhatsapp} />
+                        إرسال الطلب عبر واتساب
+                      </>
+                    )}
                   </button>
                 </form>
               )}

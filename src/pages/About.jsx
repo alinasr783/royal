@@ -57,11 +57,11 @@ const About = () => {
                   <div className="social-content">
                     <h3>واتساب</h3>
                     <div className="contact-links">
+                      <a href="https://wa.me/963968999505">
+                        <FontAwesomeIcon icon={faPhone} /> 00963968999505
+                      </a>
                       <a href="https://wa.me/963953210552">
                         <FontAwesomeIcon icon={faPhone} /> 00963953210552
-                      </a>
-                      <a href="https://wa.me/963958999505">
-                        <FontAwesomeIcon icon={faPhone} /> 00963958999505
                       </a>
                       <a href="https://wa.me/01012696180">
                         <FontAwesomeIcon icon={faPhone} /> 00201012696180
@@ -112,10 +112,9 @@ const About = () => {
                     <div>
                       <h3>الهواتف</h3>
                       <div className="contact-details">
-                        <p>+996553080522</p>
-                        <p>+996554010636</p>
-                        <p>01014838489</p>
-                        <p>01080439225</p>
+                        <p>00963968999505</p>
+                        <p>00963953210552</p>
+                        <p>00201012696180</p>
                       </div>
                     </div>
                   </div>
@@ -127,7 +126,7 @@ const About = () => {
                     <div>
                       <h3>البريد الإلكتروني</h3>
                       <div className="contact-details">
-                        <a href="mailto:info@futuretostudy.com">info@futuretostudy.com</a>
+                        <a href="mailto:info@futuretostudy.com">dr.mosaabalothman2@gmail.com</a>
                       </div>
                     </div>
                   </div>
