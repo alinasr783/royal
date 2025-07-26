@@ -19,6 +19,7 @@ import {
   faUserTie
 } from '@fortawesome/free-solid-svg-icons';
 import './Nation.css';
+import { countriesData } from '../lib/educationData';
 
 const Nation = () => {
   const { id } = useParams();
@@ -33,7 +34,9 @@ const Nation = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // دمج الدول القديمة مع الدول الجديدة من الملف المركزي
   const destinations = [
+    // الدول القديمة
     {
       id: 1,
       name: "مصر",
@@ -105,9 +108,12 @@ const Nation = () => {
         "تعلم اللغة الصينية المطلوبة عالمياً",
         "منح دراسية سخية للطلاب المتميزين"
       ]
-    }
+    },
+    // الدول الجديدة من الملف المركزي
+    ...countriesData
   ];
 
+  // الجامعات: دمج الجامعات القديمة مع جامعات الدول الجديدة
   const allUniversities = [
     // مصر
     {
