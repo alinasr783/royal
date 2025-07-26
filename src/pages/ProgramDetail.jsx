@@ -18,6 +18,7 @@ import {
 // استيراد أيقونة واتساب من الحزمة الصحيحة
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import './ProgramDetail.css';
+import { countriesData } from '../lib/educationData';
 
 const ProgramDetail = () => {
   const { id } = useParams();
@@ -41,6 +42,40 @@ const ProgramDetail = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // استخراج جميع البرامج من الجامعات في الدول الجديدة
+  const newPrograms = countriesData.flatMap(country =>
+    country.universities.flatMap(uni =>
+      uni.programs.map(programName => ({
+        id: `${country.id}${uni.id}${programName.length}`,
+        universityId: uni.id,
+        universityName: uni.name,
+        countryName: country.name,
+        name: programName,
+        description: `برنامج ${programName} في ${uni.name} (${country.name})`,
+        longDescription: `برنامج ${programName} في ${uni.name} (${country.name}) معتمد دولياً ويؤهل الطلاب لسوق العمل العالمي.`,
+        duration: programName.includes('طب') ? '6 سنوات' : '4 سنوات',
+        degreeType: programName.includes('دكتوراه') ? 'دكتوراه' : programName.includes('ماجستير') ? 'ماجستير' : 'بكالوريوس',
+        tuitionFee: country.studyCost,
+        language: country.language,
+        startDate: 'سبتمبر 2024',
+        applicationDeadline: '1 يوليو 2024',
+        requirements: [
+          'شهادة الثانوية العامة أو ما يعادلها',
+          'صورة جواز السفر',
+          'صور شخصية',
+          'شهادة صحية',
+        ],
+        careerOpportunities: [
+          'العمل في المجال الأكاديمي أو المهني المتخصص',
+          'فرص بحثية أو دراسات عليا',
+          'العمل في شركات دولية أو محلية'
+        ],
+        image: uni.image
+      })
+    )
+  );
+
+  // دمج البرامج القديمة مع البرامج الجديدة
   const programs = [
     // Egypt Programs
     {
@@ -214,7 +249,8 @@ const ProgramDetail = () => {
         "مطور أنظمة ذكية"
       ],
       image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-    }
+    },
+    ...newPrograms
   ];
 
   // العثور على البرنامج المحدد

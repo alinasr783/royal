@@ -14,6 +14,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Header from '../components/Header'
 import './Destination.css';
+import { countriesData } from '../lib/educationData';
 
 const Destinations = () => {
   const navigate = useNavigate();
@@ -23,7 +24,9 @@ const Destinations = () => {
   }, []);
   
 
+  // دمج الدول القديمة مع الدول الجديدة من الملف المركزي
   const destinations = [
+    // الدول القديمة
     {
       id: 1,
       name: "مصر",
@@ -95,7 +98,9 @@ const Destinations = () => {
         "تعلم اللغة الصينية المطلوبة عالمياً",
         "منح دراسية سخية للطلاب المتميزين"
       ]
-    }
+    },
+    // الدول الجديدة من الملف المركزي
+    ...countriesData
   ];
 
   const [searchTerm, setSearchTerm] = useState('');
