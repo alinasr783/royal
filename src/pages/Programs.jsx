@@ -19,6 +19,7 @@ import {
   faUserGraduate
 } from '@fortawesome/free-solid-svg-icons';
 import './Programs.css';
+import { countriesData } from '../lib/educationData';
 
 const Programs = () => {
 
@@ -47,6 +48,29 @@ const Programs = () => {
     window.scrollTo(0, 0);
   },[])
 
+  // استخراج جميع البرامج من الجامعات في الدول الجديدة
+  const newPrograms = countriesData.flatMap(country =>
+    country.universities.flatMap(uni =>
+      uni.programs.map(programName => ({
+        id: `${country.id}${uni.id}${programName.length}`,
+        universityId: uni.id,
+        universityName: uni.name,
+        countryName: country.name,
+        name: programName,
+        description: `برنامج ${programName} في ${uni.name} (${country.name})`,
+        duration: programName.includes('طب') ? '6 سنوات' : '4 سنوات',
+        degreeType: programName.includes('دكتوراه') ? 'دكتوراه' : programName.includes('ماجستير') ? 'ماجستير' : 'بكالوريوس',
+        tuitionFee: country.studyCost,
+        language: country.language,
+        startDate: 'سبتمبر 2024',
+        applicationDeadline: '1 يوليو 2024',
+        image: uni.image,
+        rating: 4.7
+      })
+    )
+  );
+
+  // دمج البرامج القديمة مع البرامج الجديدة
   const programs = [
     // برامج مصر
     {
@@ -172,7 +196,8 @@ const Programs = () => {
       applicationDeadline: "30 يونيو 2024",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
       rating: 4.7
-    }
+    },
+    ...newPrograms
   ];
 
   // تصفية البرامج الدراسية
