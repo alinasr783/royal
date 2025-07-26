@@ -66,7 +66,7 @@ const Programs = () => {
         applicationDeadline: '1 يوليو 2024',
         image: uni.image,
         rating: 4.7
-      })
+      }))
     )
   );
 
