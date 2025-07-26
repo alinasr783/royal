@@ -77,7 +77,7 @@ const ProgramDetail = () => {
 
   // دمج البرامج القديمة مع البرامج الجديدة
   const programs = [
-    // Egypt Programs
+    // مصر
     {
       id: 1,
       universityId: 1,
@@ -135,7 +135,7 @@ const ProgramDetail = () => {
       image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
     },
 
-    // Syria Programs
+    // سوريا
     {
       id: 3,
       universityId: 3,
@@ -193,7 +193,7 @@ const ProgramDetail = () => {
       image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
     },
 
-    // China Programs
+    // الصين
     {
       id: 5,
       universityId: 5,
@@ -250,7 +250,221 @@ const ProgramDetail = () => {
       ],
       image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
     },
-    ...newPrograms
+
+    // روسيا
+    {
+      id: 7,
+      universityId: 7,
+      universityName: "جامعة موسكو الحكومية",
+      name: "الطب العام (MBBS)",
+      description: "برنامج الطب العام باللغة الإنجليزية معترف به عالمياً",
+      longDescription: "يقدم برنامج الطب العام (MBBS) بجامعة موسكو الحكومية تعليماً طبياً وفق المعايير الدولية. البرنامج معترف به من قبل منظمة الصحة العالمية والهيئات الطبية العربية. يشمل تدريباً عملياً في مستشفيات الجامعة الحديثة.",
+      duration: "6 سنوات",
+      degreeType: "بكالوريوس",
+      tuitionFee: "6,000 - 8,000 دولار سنوياً",
+      language: "الإنجليزية والروسية",
+      startDate: "سبتمبر",
+      applicationDeadline: "15 يوليو",
+      requirements: [
+        "شهادة ثانوية بمعدل 85% فما فوق",
+        "إجادة اللغة الإنجليزية (IELTS 6.0 أو TOEFL 80)",
+        "شهادة صحية",
+        "جواز سفر ساري"
+      ],
+      careerOpportunities: [
+        "طبيب عام",
+        "متخصص في المجالات الطبية",
+        "باحث في المؤسسات الطبية",
+        "أكاديمي في كليات الطب"
+      ],
+      image: "https://images.unsplash.com/photo-1620052581237-2d1d7f5b8c7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 8,
+      universityId: 8,
+      universityName: "جامعة سانت بطرسبرغ التقنية",
+      name: "هندسة البترول والغاز",
+      description: "برنامج متقدم في هندسة البترول والغاز",
+      longDescription: "يقدم برنامج هندسة البترول والغاز تدريباً متخصصاً في استكشاف واستخراج الموارد النفطية والغازية. يشمل مناهج عملية في الجيولوجيا الهندسية وتقنيات الحفر الحديثة.",
+      duration: "4 سنوات",
+      degreeType: "بكالوريوس",
+      tuitionFee: "4,500 - 6,500 دولار سنوياً",
+      language: "الإنجليزية والروسية",
+      startDate: "سبتمبر",
+      applicationDeadline: "1 أغسطس",
+      requirements: [
+        "شهادة ثانوية (علمي) بمعدل 80%",
+        "إجادة اللغة الإنجليزية",
+        "خلفية قوية في الرياضيات والفيزياء"
+      ],
+      careerOpportunities: [
+        "مهندس بترول",
+        "مهندس حفر",
+        "مهندس إنتاج",
+        "باحث في مجال الطاقة"
+      ],
+      image: "https://images.unsplash.com/photo-1612428978260-8b2a342b9e88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+
+    // بيلاروسيا
+    {
+      id: 9,
+      universityId: 9,
+      universityName: "الجامعة الطبية الحكومية البيلاروسية",
+      name: "طب الأسنان",
+      description: "برنامج طب الأسنان باللغة الإنجليزية",
+      longDescription: "برنامج متكامل لطب الأسنان مع تدريب سريري مكثف في عيادات الجامعة. يشمل جميع تخصصات طب الأسنان مع تطبيقات عملية باستخدام أحدث التقنيات.",
+      duration: "5 سنوات",
+      degreeType: "بكالوريوس",
+      tuitionFee: "4,000 - 6,000 دولار سنوياً",
+      language: "الإنجليزية",
+      startDate: "سبتمبر",
+      applicationDeadline: "31 يوليو",
+      requirements: [
+        "شهادة ثانوية (علمي) بمعدل 80%",
+        "إجادة اللغة الإنجليزية",
+        "شهادة صحية"
+      ],
+      careerOpportunities: [
+        "طبيب أسنان عام",
+        "أخصائي تقويم أسنان",
+        "أخصائي جراحة الفم",
+        "باحث في طب الأسنان"
+      ],
+      image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"
+    },
+    {
+      id: 10,
+      universityId: 10,
+      universityName: "الجامعة التقنية الوطنية البيلاروسية",
+      name: "هندسة المعلوماتية",
+      description: "برنامج هندسة البرمجيات وتقنية المعلومات",
+      longDescription: "برنامج متكامل في هندسة البرمجيات يشمل تطوير الأنظمة، قواعد البيانات، وأمن المعلومات. يتميز بشراكات مع شركات تقنية عالمية.",
+      duration: "4 سنوات",
+      degreeType: "بكالوريوس",
+      tuitionFee: "3,500 - 5,000 دولار سنوياً",
+      language: "الإنجليزية والروسية",
+      startDate: "سبتمبر",
+      applicationDeadline: "15 أغسطس",
+      requirements: [
+        "شهادة ثانوية بمعدل 75%",
+        "خلفية في الرياضيات والحاسوب",
+        "إجادة اللغة الإنجليزية"
+      ],
+      careerOpportunities: [
+        "مهندس برمجيات",
+        "مطور تطبيقات",
+        "محلل نظم",
+        "متخصص أمن معلومات"
+      ],
+      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+
+    // طاجيكستان
+    {
+      id: 11,
+      universityId: 11,
+      universityName: "الجامعة الطبية الحكومية الطاجيكية",
+      name: "الطب البشري",
+      description: "برنامج الطب العام باللغة الروسية",
+      longDescription: "برنامج طبي شامل يؤهل الطلاب لممارسة المهنة وفق المعايير الدولية. يشمل تدريباً عملياً في مستشفيات العاصمة دوشنبه.",
+      duration: "6 سنوات",
+      degreeType: "بكالوريوس",
+      tuitionFee: "3,000 - 4,500 دولار سنوياً",
+      language: "الروسية",
+      startDate: "سبتمبر",
+      applicationDeadline: "1 سبتمبر",
+      requirements: [
+        "شهادة ثانوية (علمي) بمعدل 80%",
+        "إجادة اللغة الروسية",
+        "فحص طبي"
+      ],
+      careerOpportunities: [
+        "طبيب عام",
+        "التخصص في المجالات الطبية",
+        "العمل في المستشفيات الحكومية والخاصة"
+      ],
+      image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 12,
+      universityId: 12,
+      universityName: "الجامعة الوطنية الطاجيكية",
+      name: "اللغة والأدب الروسي",
+      description: "برنامج متخصص في اللغة الروسية وآدابها",
+      longDescription: "برنامج أكاديمي متكامل لدراسة اللغة الروسية وآدابها وتاريخها الثقافي. يشمل تدريبات عملية في الترجمة والتدريس.",
+      duration: "4 سنوات",
+      degreeType: "بكالوريوس",
+      tuitionFee: "1,500 - 2,500 دولار سنوياً",
+      language: "الروسية",
+      startDate: "سبتمبر",
+      applicationDeadline: "1 سبتمبر",
+      requirements: [
+        "شهادة ثانوية",
+        "معرفة أساسية باللغة الروسية"
+      ],
+      careerOpportunities: [
+        "مدرس لغة روسية",
+        "مترجم",
+        "دبلوماسي",
+        "باحث لغوي"
+      ],
+      image: "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
+    },
+
+    // تركيا
+    {
+      id: 13,
+      universityId: 13,
+      universityName: "جامعة إسطنبول",
+      name: "الهندسة المعمارية",
+      description: "برنامج متكامل في العمارة والتصميم الحضري",
+      longDescription: "برنامج يجمع بين الأصالة المعمارية العثمانية والحديثة مع التركيز على التصميم المستدام. يشمل زيارات ميدانية للمواقع التاريخية في إسطنبول.",
+      duration: "4 سنوات",
+      degreeType: "بكالوريوس",
+      tuitionFee: "2,000 - 4,000 دولار سنوياً",
+      language: "التركية والإنجليزية",
+      startDate: "سبتمبر",
+      applicationDeadline: "15 يوليو",
+      requirements: [
+        "شهادة ثانوية بمعدل 75%",
+        "اختبار قدرات في الرسم",
+        "إجادة اللغة التركية أو الإنجليزية"
+      ],
+      careerOpportunities: [
+        "مهندس معماري",
+        "مصمم حضري",
+        "مخطط مدن",
+        "باحث في العمارة الإسلامية"
+      ],
+      image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"
+    },
+    {
+      id: 14,
+      universityId: 14,
+      universityName: "جامعة الشرق الأوسط التقنية",
+      name: "هندسة الطيران",
+      description: "برنامج متقدم في هندسة الطيران والفضاء",
+      longDescription: "برنامج رائد في مجال هندسة الطيران يشمل تصميم الطائرات، أنظمة الدفع، وتقنيات الفضاء. يتميز بشراكات مع شركات طيران عالمية.",
+      duration: "4 سنوات",
+      degreeType: "بكالوريوس",
+      tuitionFee: "3,000 - 5,000 دولار سنوياً",
+      language: "الإنجليزية",
+      startDate: "سبتمبر",
+      applicationDeadline: "31 مايو",
+      requirements: [
+        "شهادة ثانوية (علمي) بمعدل 90%",
+        "خلفية قوية في الرياضيات والفيزياء",
+        "إجادة اللغة الإنجليزية (TOEFL 80)"
+      ],
+      careerOpportunities: [
+        "مهندس طيران",
+        "مصمم أنظمة طيران",
+        "باحث في مجال الفضاء",
+        "مهندس صيانة طائرات"
+      ],
+      image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1526&q=80"
+    }
   ];
 
   // العثور على البرنامج المحدد

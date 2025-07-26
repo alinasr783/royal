@@ -29,6 +29,6 @@ export default defineConfig({
     }),
   ],
   server: {
-    allowedHosts: ['833974da-f808-41af-b463-8d925f963a23-00-3fw330sbin501.riker.replit.dev'],
+    allowedHosts: ['4afc4786-03f9-415e-b1ec-b80f3e414f3c-00-1wky6uaik2xqr.kirk.replit.dev'],
   },
 });
