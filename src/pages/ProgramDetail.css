@@ -322,6 +322,7 @@ body {
   font-size: 1rem;
   transition: var(--transition);
   font-family: inherit;
+  color : gold !important;
 }
 
 .form-group input:focus, 
